@@ -3,7 +3,7 @@ texturepackermodule.h
 Author: Jeremiah Korreck
 */
 
-#include "texturepackermodule.h"
+#include "modules/texturepackermodule/texturepackermodule.h"
 
 void TexturepackerModule::add(int p_value) {
     count += p_value;
@@ -18,11 +18,14 @@ int TexturepackerModule::get_total() const {
 }
 
 void TexturepackerModule::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("add", "value"), &Summator::add);
-    ClassDB::bind_method(D_METHOD("reset"), &Summator::reset);
-    ClassDB::bind_method(D_METHOD("get_total"), &Summator::get_total);
+    ClassDB::bind_method(D_METHOD("add", "value"), 
+			&TexturepackerModule::add);
+    ClassDB::bind_method(D_METHOD("reset"), 
+			&TexturepackerModule::reset);
+    ClassDB::bind_method(D_METHOD("get_total"), 
+			&TexturepackerModule::get_total);
 }
 
-TexturepackerModule::Summator() {
+TexturepackerModule::TexturepackerModule() {
     count = 0;
 }
