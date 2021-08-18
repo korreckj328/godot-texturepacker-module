@@ -6,20 +6,25 @@ Author: Jeremiah Korreck
 #ifndef TEXTUREPACKER_MODULE_H
 #define TEXTUREPACKER_MODULE_H
 
-#include "core/reference.h"
+#include "core/resource.h"
+#include <string.h>
+#include "modules/texturepackermodule/ImportTilesheet.h"
+#include "modules/texturepackermodule/ImportSpritesheet.h"
 
-class TexturepackerModule : public Reference {
-    GDCLASS(TexturepackerModule, Reference);
+class TexturepackerModule : public Resource {
+    GDCLASS(TexturepackerModule, Resource);
 
-    int count;
+    ImportTilesheet *importTilesheet = nullptr;
+	ImportSpritesheet *importSpritesheet = nullptr;
+
 
 protected:
     static void _bind_methods();
 
 public:
-    void add(int p_value);
+	std::string get_name() const;
+
     void reset();
-    int get_total() const;
 
     TexturepackerModule();
 };
